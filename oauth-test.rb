@@ -98,9 +98,9 @@ end
 
 httpClient = OauthTyphoeus.new(ARGV[0])
 
-params = { "maxResults" => "500", "pageToken" => pageToken }
+params = { "maxResults" => "500" }
 
-puts "Out-going request: #{pageToken}"
+puts "Out-going request..."
 object_list_response = httpClient.get(
     "https://www.googleapis.com/storage/v1/b/production_backup/o",
     followlocation: true,
@@ -111,7 +111,7 @@ object_list_response = httpClient.get(
 
 if( object_list_response.code == 200 )
   object_list = JSON.parse(object_list_response.body)
-  puts "Response: \n#{object_list.body}"
+  puts "Response: \n#{object_list}"
 else
   puts "Error code"
 end
